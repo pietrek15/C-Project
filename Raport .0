@@ -1,8 +1,8 @@
 W ramach orijektu spróbuję stworzyć grę platformową.
 W tym celu użyję silnika grficznego Unity.
-Gra będzie w stylu 2.5D.
+Gra będzie w stylu 2d.
 Rozgrywka w pewnym stopniu będzie się opierać na zabawie z fizyką.
-Będzie możliwość poruszania się jedną postacią, model 3d.
+Będzie możliwość poruszania się jedną postacią.
 Na mapie będą się znajować przeciwnicy którzy zostaną obdarzeni jakąś inteligencją.
 Możliwość zapisu/wczytania stanu gry, będą na zasadzie checkpointów.
 Po przejściu poziomu będą wyświetlane punktu zdobyte na tym poziomie.
