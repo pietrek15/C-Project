@@ -24,7 +24,7 @@ public class Controller2D : RaycastController
         
     }
 
-    public void Move(Vector3 velocity)                      // metoda ktora sie wykonuje podczas ruchu, argument to predkosc objektu
+    public void Move(Vector3 velocity, bool standingOnPlatform = false)                      // metoda ktora sie wykonuje podczas ruchu, argument to predkosc objektu
     {
         UpdateRaycastOrigins();                             
         collisions.Reset();                                 //  usuwa informacje o poprzednich kolizjach
@@ -45,6 +45,11 @@ public class Controller2D : RaycastController
         }
 
         transform.Translate(velocity);
+
+        if (standingOnPlatform)
+        {
+            collisions.below = true;
+        }
     }
 
     void HorizontalCollisions(ref Vector3 velocity)                                           // sprawdzanie kolizji w poziomie
@@ -62,6 +67,9 @@ public class Controller2D : RaycastController
 
             if (hit)                                                                            // skutek zderzenia z podlozem
             {
+                if (hit.distance == 0)
+                    continue;
+
                 float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);                        // wyliczanie pod jakim katem nastapilo zderzenie 
 
                 if(i == 0 && slopeAngle <= maxClimbAngle)
