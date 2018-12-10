@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class SawBlade : MonoBehaviour {
 
     public int speed = 30;
@@ -11,9 +13,14 @@ public class SawBlade : MonoBehaviour {
         transform.Rotate(Vector3.forward * speed * Time.deltaTime, Space.World);
         
 	}
-    void OnTriggerEnter(BoxCollider2D collider)
+    void OnTriggerEnter2D(Collider2D c)
     {
-        GameObject otherObj = collider.gameObject;
-        Debug.Log("Triggered with: " + otherObj);
+        if(c.tag == "Player")
+        {
+            c.GetComponent<Player>().DamagePlayer(100);
+                
+
+            Debug.Log("Mama i killed the man");
+        }
     }
 }
