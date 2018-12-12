@@ -3,23 +3,15 @@ using System.Collections;
 
 public class CameraFollow : MonoBehaviour
 {
+    public Transform target;            
+    public float smoothing = 5f;       
 
-    public Transform target;            // The position that that camera will be following.
-    public float smoothing = 5f;        // The speed with which the camera will be following.
-
-
-    Vector3 offset;                     // The initial offset from the target.
+    Vector3 offset;                     
 
 
     public void Start()
-    {
-        
-        
-            target = GameObject.FindGameObjectWithTag("Player").transform; // this is goint to find a certain tagged object from hirarchey and assing it to target.
-        
-        
-
-        // Calculate the initial offset.
+    {  
+        target = GameObject.FindGameObjectWithTag("Player").transform; 
         offset = transform.position + target.position;
     }
 
@@ -29,10 +21,7 @@ public class CameraFollow : MonoBehaviour
         if (target == null)
             return;
 
-        // Create a postion the camera is aiming for based on the offset from the target.
         Vector3 targetCamPos = target.position + offset;
-
-        // Smoothly interpolate between the camera's current position and it's target position.
         transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
     }
 }
