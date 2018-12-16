@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+/*
+ * ???
+ * CIEZKO TEGO NEI ZROZUMIEC :) 
+ * 
+ * */
+
 
 public class MainMenu : MonoBehaviour {
 
@@ -12,7 +18,7 @@ public class MainMenu : MonoBehaviour {
 
     public void QuitGame()
     {
-        Debug.Log("Ja chce wyjsc!");
+        Debug.Log("Ja chce wyjsc!"); // W EDYTORZE NIE DA SIE WYJSC WIEC ZEBY BYLO WIDAC ZE TO DZIALA TO WYPISUJE KOMUNITKAT W KONSOLI
         Application.Quit();
     }
 

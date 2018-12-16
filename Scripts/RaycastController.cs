@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * TWORZENIE PROMIENI SPRAWDZAJACYCH KOLIZJE
+ * 
+ * 
+ */
+
+
 public class RaycastController : MonoBehaviour {
 
     public LayerMask collisionMask;
@@ -10,7 +17,7 @@ public class RaycastController : MonoBehaviour {
     public int horizontalRayCount = 4;
     public int verticalRayCount = 4;
 
-    [HideInInspector]
+    [HideInInspector]                                           // NIE CHCE TEGO WIDZIEC W EDYORZE
     public float horizontalRaySpacing;
     [HideInInspector]
     public float verticalRaySpacing;
@@ -30,7 +37,7 @@ public class RaycastController : MonoBehaviour {
         CalculateRaySpacing();
     }
 
-    public void UpdateRaycastOrigins()                                                     // tworzy promienie sprawdzajace kolizje
+    public void UpdateRaycastOrigins()                                                     // tworzy promieniI sprawdzajace kolizje
     {
         Bounds bounds = collider.bounds;
         bounds.Expand(skinWidth * -2);
@@ -53,7 +60,7 @@ public class RaycastController : MonoBehaviour {
         verticalRaySpacing = bounds.size.x / (verticalRayCount - 1);
     }
     // -----------------------------------------------------------//
-    public struct RaycastOrigins
+    public struct RaycastOrigins                                                    
     {
         public Vector2 topLeft, topRight;
         public Vector2 bottomLeft, bottomRight;

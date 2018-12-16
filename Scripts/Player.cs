@@ -2,12 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * TYPY SKAKANIA 
+ * ZADAWANIE OBRAZEN I ZYCIE GRACZA
+ * ROZNE ZMIENNE NA TEMAT SKOKU PORUSZANIA SIE ZABIJANIA GRACZA
+ * 
+ */
+
+
 [RequireComponent (typeof(Controller2D))]   // teraz z posiomu Unity nie da sie usunac tego komponentu bo jest wymagany 
 public class Player : MonoBehaviour {
 
     public float jumpHeight = 4;            // wysokosc skoku
     public float timeToJumpApex = .4f;      // czas w sek do osiągniecia szczytu
-    float accelerationTimeAirbone = .2f;    // czas do osiagnieca max predkosci w locie
+    float accelerationTimeAirbone = .12f;    // czas do osiagnieca max predkosci w locie
     float accelerationTimeGrounded = .1f;   // czas do osiagnieca max predkosci na ziemi
     public float moveSpeed = 10;
 
@@ -34,7 +42,7 @@ public class Player : MonoBehaviour {
 
         gravity =- (2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);         // wyliczanie grawitacji
         jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
-        print("Gravity" + gravity + " Jump Velocity " + jumpVelocity);          // w konsoli printuje te wartosci
+        
 	}
 	
 	
@@ -90,27 +98,27 @@ public class Player : MonoBehaviour {
 
         
         //-------------------------------------------------------------------------------------------//
-        if(Input.GetKeyDown(KeyCode.Space))                                      // !!!WAZNE wprzycisk odpowiedzialny za SKOK!!!
+        if(Input.GetKeyDown(KeyCode.Space))                                      // przycisk odpowiedzialny za SKOK
         {
-            if (wallSliding)
+            if (wallSliding)                                                    // WARIACJE SKOKOW 
             {
-                if(wallDirX == input.x)
+                if(wallDirX == input.x)                                            // SKAKANIE WZDUZ SCIANY
                 {
                     velocity.x = -wallDirX * wallJumpClimb.x;
                     velocity.y = wallJumpClimb.y;
                 }
-                else if (input.x == 0)
+                else if (input.x == 0)                                             // SKAKANIE PRZY UZYNIU SAMEGO PRZYCISKU ODPOWIEDZIALNEGO ZA SKOK
                 {
                     velocity.x = -wallDirX * wallJumpOff.x;
                     velocity.y = wallJumpOff.y;
                 }
                 else
-                {
+                {                                                                  //TAKI JAKBY SUPER SKOK
                     velocity.x = -wallDirX * wallLeap.x;
                     velocity.y = wallLeap.y;
                 }
             }
-            if (controller.collisions.below)
+            if (controller.collisions.below)                                        // SKACZ JELSI JEST KOLIZJA OD SPODU
             {
                 velocity.y = jumpVelocity;
             }     
@@ -122,14 +130,14 @@ public class Player : MonoBehaviour {
 
     //--------------------------------------------------------------
     [System.Serializable]
-    public class PlayerStats
+    public class PlayerStats                                    // ZYCIE GRACZA
     {
         public int Health = 100;
     }
 
     public PlayerStats playerStats = new PlayerStats();
 
-    public void DamagePlayer (int damage)
+    public void DamagePlayer (int damage)                       // ZADAJ OBRAZENIA GRACZOWI
     {
         playerStats.Health -= damage;
         if (playerStats.Health <= 0)

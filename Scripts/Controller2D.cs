@@ -217,7 +217,7 @@ public class Controller2D : RaycastController
 
 
 
-    public struct CollisionInfo
+    public struct CollisionInfo                                                 // PRZECHOWUEJ INFORMACJIE O KOLIZJACH
     {
         public bool above, below;
         public bool left, right;

@@ -2,12 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+/*
+ * 
+ * MENU PAYZY W GRZE
+ * 3 PRZYCISKI -> WZNOW , MENU I WYJDZ
+ * ZATRZYMYWANIE CZASU PO URUCHOMIENU MANU
+ */
+
+
+
 
 public class PauseMenu : MonoBehaviour {
 
     public GameObject pauseMenuUI;
 
-    public static bool GameIsPause = false;
+    public static bool GameIsPause = false;     // INICJOWANIE FALSZEM PO TO ABY 
 	
 	// Update is called once per frame
 	void Update () {
@@ -31,7 +40,7 @@ public class PauseMenu : MonoBehaviour {
         GameIsPause = false;
     }
 
-    void Pause()
+    public void Pause()
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;

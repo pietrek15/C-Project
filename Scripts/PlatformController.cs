@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿/*
+SKRYPT ODPOWIEDZIALNY ZA PORUSZANIE SIE OBIEKTOW OD PKT DO PKT
+JAK ZACHOWUJE SIE PASAZER PLATFORMY
+WYKRYWANIE KOLIZJI MIEDZY PASAZEREM A PLATFORMA
+########################################################*/
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,7 +22,7 @@ public class PlatformController : RaycastController {
     float percentBetweenWaypoints;
 
     List<PassengerMovement> passengerMovement;
-    Dictionary<Transform, Controller2D> passengerDictionary = new Dictionary<Transform, Controller2D>();
+    Dictionary<Transform, Controller2D> passengerDictionary = new Dictionary<Transform, Controller2D>();// TUTAJ ZAPISYWANA JEST POZYCJA PLATFORMY
 
 	public override void Start ()
     {
@@ -30,7 +37,7 @@ public class PlatformController : RaycastController {
 
     void Update()
     {
-        UpdateRaycastOrigins();
+        UpdateRaycastOrigins();                         // SPRAWDZANIE KOLIZJI
 
         Vector3 velocity = CalculatePlatformMovement();
 
@@ -87,7 +94,7 @@ public class PlatformController : RaycastController {
         float directionX = Mathf.Sign(velocity.x);
         float directionY = Mathf.Sign(velocity.y);
 
-        //platforma poruszajaca sie pionoweo
+                                                                            //platforma poruszajaca sie pionoweo
 
         if (velocity.y != 0)
         {
@@ -114,7 +121,7 @@ public class PlatformController : RaycastController {
         }
 
 
-        // platforma poruszajaca sie horyzontalnie
+                                                                          // platforma poruszajaca sie horyzontalnie
         if (velocity.x != 0)
         {
             float rayLength = Mathf.Abs(velocity.x) + skinWidth;
@@ -139,7 +146,7 @@ public class PlatformController : RaycastController {
             }
         }
 
-        // sprawdza czy gracz jest na platformie
+                                                                            // sprawdza czy gracz jest na platformie
         if(directionY == -1 || velocity.y == 0 && velocity.x != 0)
         {
             float rayLength = skinWidth * 2;
@@ -163,7 +170,7 @@ public class PlatformController : RaycastController {
         }
     }
 
-    struct PassengerMovement
+    struct PassengerMovement                                                                // STRUKTURA PRZECHOWUJACA INFO NA TEMAT PASAZERA
     {
         public Transform transform;
         public Vector3 velocity;
@@ -179,7 +186,7 @@ public class PlatformController : RaycastController {
         }
     }
 
-    void OnDrawGizmos()
+    void OnDrawGizmos()                                                             // ZEBY BYLO WIDAC PUNKTY MIEDZY KTORYMI SIE PORUSZA
     {
         if(localWaypoints != null)
         {
