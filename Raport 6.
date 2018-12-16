@@ -1,0 +1,21 @@
+Oto co już posiada gra:
+- Menu główne, a w nim 3 przyciski: 
+  * Play - uruchamia pierwsza scene(poziom);
+  * Options - na razie znajduje sie tam suwak odpowiedzialny za poziom głośności
+  * Quit - wyjście z gry
+- Gdy juz zostanie uruchomiona jakaś scena, wraz z załadowaniem jej zaczyna płynąć czas(który widać u góry ekranu).
+- W dowolnym momencie można wywołać Pauze, która to zatrzymuje gre, a w niej 3 przyciski : Wznów gre, Menu, Quit.
+- Dodałem srypt umożliwiający zminiać przybliżenie kamery.
+- Kamera śledzi gracza
+- Gracz po śmierci natychmiast zostaje odrodzony.
+- Stworzyłem skrypt odpowiedzialny za zadawanie graczowi obrażeń.
+- Teraz gracz ma kilka możliwości skoku.
+- Napisałem skrypt który umożliwa zakończenie poziomu po dotarciu do mety.
+- Po dotarciu do mety pojawia się komunikat na którym widnieje nasz czas i przycisk umożliwiający wyjście od menu
+
+Plany :
+* sprawić aby czas uzyskany na koncu poziomu był zapisywane do pliku, 
+* do komunikatu który pojawia sie po dotarciu do mety dodać przycisk umożliwiający załadowanie kolejnego poziomu.
+* Menu Główne - zamiast przysku Play wstawić przycisk Choose Level - który po naciśnięciu pokaże wszystkie poziomy, po naciśnięciu
+  poziomu zostanie on załadowny.
+* po wczytaniu pozomu dodać odliczanie do rozpoczęcia gry ( 3 ... 2 .. 1 . 0  START!) 
